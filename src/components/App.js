@@ -5,6 +5,7 @@ import './../styles/App.css';
 const App = () => {
   const [data , setData] = useState([]);
   const [loading , setLoading] = useState(false);
+  const [error , setError] = useState(false);
 
   function fetchData(){
     setLoading(true);
@@ -14,7 +15,10 @@ const App = () => {
         setData(response);
         setLoading(false);
       })
-      .catch(error => console.log(error));
+      .catch(e => {
+        setError(e.message);
+        setLoading(false);
+      });
   }
   
   useEffect(() => {
@@ -26,8 +30,13 @@ const App = () => {
         {/* Do not remove the main div */}
         <h1>Data Fetched from API</h1>
         {
-          !loading && !!data && (
+          !loading && (
             <pre>{JSON.stringify(data, null, 2)}</pre>
+          )
+        }
+        {
+          !loading && (
+            <pre>{error}</pre>
           )
         }
     </div>
