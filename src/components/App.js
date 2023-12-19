@@ -30,6 +30,11 @@ const App = () => {
         {/* Do not remove the main div */}
         <h1>Data Fetched from API</h1>
         {
+          loading && (
+            <pre>Loading...</pre>
+          )
+        }
+        {
           !loading && (
             <pre>{JSON.stringify(data, null, 2)}</pre>
           )
