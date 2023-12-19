@@ -26,7 +26,7 @@ const App = () => {
         {/* Do not remove the main div */}
         <h1>Data Fetch From Api</h1>
         {
-          !loading && !!data (
+          !loading && !!data && (
             <pre>{JSON.stringify(data, null, 2)}</pre>
           )
         }
