@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import './../styles/App.css';
 
@@ -15,8 +14,8 @@ const App = () => {
         setData(response);
         setLoading(false);
       })
-      .catch(e => {
-        setError(e.message);
+      .catch(() => {
+        setError('An error occurred: ');
         setLoading(false);
       });
   }
